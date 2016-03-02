@@ -7,8 +7,7 @@
 #   fresh jasoncodes/dotfiles config/tmux.conf --file
 #
 # See http://freshshell.com/readme for documentation.
-FRESH_NO_BIN_CHECK=true
-fresh freshshell/fresh bin/fresh --bin
+
 
 # bin commands
 fresh-options --bin
@@ -61,6 +60,13 @@ fresh chauncey-garrett/zsh-prompt-garrett prompt_garrett_setup --file=.zprezto/m
 
 # now get the completed prezto setup
 ln -sf ~/.fresh/build/.zprezto/ ~/.zprezto
+
+# Config
+fresh-options --file
+
+  fresh zsh/\*
+
+fresh-options
 
 fresh_after_build() {
 chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs
