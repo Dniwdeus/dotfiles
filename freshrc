@@ -1,0 +1,67 @@
+# freshshell.com
+#
+# Examples:
+#
+#   fresh twe4ked/dotfiles shell/functions/\*
+#   fresh jasoncodes/dotfiles shell/aliases/rails.sh
+#   fresh jasoncodes/dotfiles config/tmux.conf --file
+#
+# See http://freshshell.com/readme for documentation.
+
+
+# bin commands
+fresh-options --bin
+  fresh freshshell/fresh bin/fresh
+  fresh clvv/fasd fasd
+  fresh klausi/pareviewsh pareview.sh --ref=7.x-1.x
+  fresh alicraigmile/show-wip show-wip
+fresh-options
+
+fresh rosenstrauch/prezto . --file=.zprezto/ --ref=6c81815
+
+fresh samirahmed/fu . --file=.zprezto/modules/fu/external/
+fresh zsh-users/zsh-history-substring-search . --file=.zprezto/modules/history-substring-search/external/
+fresh zsh-users/zsh-syntax-highlighting . --file=.zprezto/modules/syntax-highlighting/external/
+fresh djui/alias-tips . --file=.zprezto/modules/alias-tips/external/
+fresh Tarrasch/zsh-bd . --file=.zprezto/modules/bd/external/
+
+## Prezto themes
+fresh sindresorhus/pure  async.zsh --file=.zprezto/modules/prompt/functions/async
+fresh el1t/statusline prezto/prompt_statusline_setup --file=.zprezto/modules/prompt/functions/prompt_statusline_setup
+fresh sindresorhus/pure pure.zsh --file=.zprezto/modules/prompt/functions/prompt_pure_setup
+fresh davidjrice/prezto_powerline prompt_powerline_setup --file=.zprezto/modules/prompt/functions/prompt_powerline_setup
+fresh chauncey-garrett/zsh-prompt-garrett prompt_garrett_setup --file=.zprezto/modules/prompt/functions/prompt_garrett_setup
+
+# now get the completed prezto setup
+ln -sf ~/.fresh/build/.zprezto/ ~/.zprezto
+
+# Config
+fresh-options --file
+  fresh zsh/\*
+  fresh bashrc
+fresh-options
+
+fresh freshshell/fresh contrib/completion/fresh-completion.bash --file=~/.bashrc
+
+# adding autocompletions to shell.sh
+fresh freshshell/fresh contrib/completion/fresh-completion.zsh --file=completion/_fresh
+
+# pareview
+# https://github.com/klausi/pareviewsh
+# http://cgit.drupalcode.org/pareviewsh/tree/README.md?id=58d4a53
+fresh squizlabs/PHP_CodeSniffer . --file=src/PHP_CodeSniffer/ --ref=2.9.1
+fresh git://git.drupal.org/sandbox/coltrane/1921926.git DrupalSecure --file=src/PHP_CodeSniffer/CodeSniffer/Standards/DrupalSecure/
+fresh http://git.drupal.org/project/coder.git coder_sniffer/Drupal --ref=8.x-2.x --file=src/PHP_CodeSniffer/CodeSniffer/Standards/Drupal/
+fresh http://git.drupal.org/project/coder.git coder_sniffer/DrupalPractice --ref=8.x-2.x --file=src/PHP_CodeSniffer/CodeSniffer/Standards/DrupalPractice/
+
+ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs ~/bin/phpcs
+ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs ~/bin/phpcbf
+
+fresh_after_build() {
+        chmod +x $HOME/bin/phpcs
+        chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf
+        chmod +x $HOME/.fresh/build/.zprezto/modules/alias-tips/external/alias-tips.py
+        chmod +x $HOME/.fresh/build/.zprezto/modules/fu/external/fu
+
+}
+
