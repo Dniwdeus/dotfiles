@@ -10,3 +10,5 @@ fi
 if [[ $- == *i* ]]; then
     stty -ixon -ixoff 2>/dev/null
 fi
+
+export EDITOR=emacs
