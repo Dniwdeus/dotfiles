@@ -60,7 +60,8 @@ ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf ~/bin/phpcbf
 
 # terminator config
 ln -sf ~/.dotfiles/config/terminator/config ~/.config/terminator/config
-
+ln -sf ~/.dotfiles/config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
+fresh Xresources --file
 fresh_after_build() {
         chmod +x $HOME/bin/phpcs
         chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf
