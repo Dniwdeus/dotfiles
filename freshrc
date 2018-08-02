@@ -55,7 +55,11 @@ fresh http://git.drupal.org/project/coder.git coder_sniffer/Drupal --ref=8.x-2.x
 fresh http://git.drupal.org/project/coder.git coder_sniffer/DrupalPractice --ref=8.x-2.x --file=src/PHP_CodeSniffer/CodeSniffer/Standards/DrupalPractice/
 
 ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs ~/bin/phpcs
-ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs ~/bin/phpcbf
+ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf ~/bin/phpcbf
+
+
+# terminator config
+ln -sf ~/.dotfiles/config/terminator/config ~/.config/terminator/config
 
 fresh_after_build() {
         chmod +x $HOME/bin/phpcs
@@ -64,4 +68,3 @@ fresh_after_build() {
         chmod +x $HOME/.fresh/build/.zprezto/modules/fu/external/fu
 
 }
-
