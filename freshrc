@@ -15,6 +15,7 @@ fresh-options --bin
   fresh clvv/fasd fasd
   fresh klausi/pareviewsh pareview.sh --ref=7.x-1.x
   fresh alicraigmile/show-wip show-wip
+  fresh docksal/docksal bin/fin --ref=v1.10.1
 fresh-options
 
 fresh rosenstrauch/prezto . --file=.zprezto/ --ref=6c81815
