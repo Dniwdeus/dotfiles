@@ -70,3 +70,82 @@ fresh_after_build() {
         chmod +x $HOME/.fresh/build/.zprezto/modules/fu/external/fu
 
 }
+
+#########
+# EMACS #
+#########
+
+ln -sf ~/.dotfiles/config/emacs/init.el ~/.emacs.d/init.el
+
+# org js
+# fresh http://orgmode.org/worg/code/org-info-js/org-info.js
+
+# org-export-styles
+fresh fniessen/org-html-themes . --file=~/.emacs.d/org-html-themes/
+
+# org-templates
+ln -sf ~/.dotfiles/config/emacs/org-templates/ ~/.emacs.d/
+
+# Lisp from others
+
+# emacs githublinks.el https://www.reddit.com/r/emacs/comments/3jxsqb/link_to_github_in_orgmode/
+fresh lygaret/emacs.d site-lisp/org-github-links.el --file=~/.emacs.d/site-lisp/org-github-links.el --ref="96a043f"
+
+# helm github issues integration
+fresh syohex/emacs-helm-github-issues helm-github-issues.el --file=~/.emacs.d/site-lisp/helm-github-issues.el
+
+# helm org contacts
+fresh tmalsburg/helm-org-contacts helm-org-contacts.el --file=~/.emacs.d/site-lisp/helm-org-contacts.el
+fresh jd/google-maps.el . --file=~/.emacs.d/site-lisp/google-maps/
+
+#########################
+# Editable config files #
+#########################
+
+## Tmuxinator projects
+mkdir -p $HOME/.tmuxinator
+ln -sf ~/.dotfiles/config/tmuxinator/* ~/.tmuxinator/
+
+## Boom Links
+mkdir -p $HOME/.boom
+ln -sf ~/.dotfiles/manual/boom/boom ~/.boom
+
+## Cheatsheets
+mkdir -p $HOME/.cheat
+ln -sf ~/.dotfiles/manual/cheat/*  ~/.cheat/
+
+## Terminator
+mkdir -p $HOME/.config/terminator/config
+ln -sf ~/.dotfiles/config/terminator/config ~/.config/terminator/config
+
+## Atom Editor
+# mkdir -p $HOME/.atom
+# ln -sf ~/.dotfiles/config/atom/keymap.cson ~/.atom/keymap.cson
+# ln -sf ~/.dotfiles/config/atom/styles.less ~/.atom/styles.less
+# ln -sf ~/.dotfiles/config/atom/config.cson ~/.atom/config.cson
+
+fresh_after_build() {
+  ## :make some things executable
+  chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs
+  chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf
+  chmod +w $HOME/.fresh/build/src/PHP_CodeSniffer/CodeSniffer.conf.dist
+  chmod +x $HOME/.fresh/build/.zprezto/modules/alias-tips/external/alias-tips.py
+  chmod +x $HOME/.fresh/build/.zprezto/modules/fu/external/fu
+
+  $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs --config-set installed_paths ~/.fresh/build/src/PHP_CodeSniffer/CodeSniffer/Standards
+
+
+  if [[ ! $(type bash_it &>/dev/null) && -d ~/.config/bash_it ]]; then
+    ~/.config/bash_it/install.sh
+  fi
+
+
+  ## update prezto
+  #cd ~/.fresh/source/rosenstrauch/prezto/ && git checkout production && git pull
+
+  echo "sensitive files"
+  echo ls ~-SENSITIVE
+
+  echo "good job, thank you very much!"
+
+}
