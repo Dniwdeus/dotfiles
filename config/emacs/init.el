@@ -19,6 +19,9 @@
       use-package-expand-minimally nil
       use-package-compute-statistics t)
 
+;; load global configs for emacs
+(load-file "~/.emacs.d/elisp/global-settings.el")
+
 ;; configure magit
 
 (use-package magit
@@ -109,21 +112,103 @@
   (which-key-mode)
   :ensure t)
 
+(use-package org
+  :demand t
+  :commands (org-mode)
+  :ensure t
+  :diminish org-mode
+  :bind
+  (("C-c c" . org-capture)
+   ("C-c a" . org-agenda)
+   ("C-c l" . org-store-link)
+   ;;("C-c C-w" . org-refile)
+   ;;("C-c [" . org-agenda-file-to-front)
+   ;;("C-c !" . org-time-stamp-inactive)
+   ;;("C-c r" . org-sort)
+   ;;
+   ;; ("C-c +" . mby-org-agenda-toggle-list-sublevels)
+   ;; ("C-k" . org-cut-subtree)
+   ;;
+   ;;
+   ;;("C-c b" . org-iswitchb)
+   ;; ("C-c j" . org-clock-goto) ;;; jump to current task from anywhere
+   ;; ("C-c C-w" . org-refile)
+   ("C-c d" . org-refile-to-datetree)
+   ;; ("C-c i s" . my-org-screenshot)
+   ;; ("C-c o c" . org-contacts)
+   ;; ("C-c ," . org-cycle-agenda-files)
+   )
+  :mode ("\\.org'" . org-mode)
+  :interpreter "org"
+  :init
+
+  (org-babel-do-load-languages
+
+   'org-babel-load-languages
+   '((R . t)
+     (emacs-lisp . t)
+     (python . t)
+     (haskell . t)
+     (latex . t)
+     (gnuplot . t)
+     (C . t)
+     (sql . t)
+     (ditaa . t)
+     (shell . t)
+     (css . t)
+     (ditaa . t)
+     (dot .t)
+     (js . t)
+     (latex . t)
+     (ledger . t)
+     (makefile . t)
+     (org . t)
+     (python . t)
+     (sass . t)
+     ))
+  :config
+  (progn
+  (add-hook 'org-mode-hook
+     (lambda ()
+       (let ((filename (buffer-file-name (current-buffer))))
+         (when (and filename (string= "trello" (file-name-extension filename)))
+           (org-trello-mode)))))
+
+    (setq org-directory "~/org/")
+    (setq org-default-notes-file (concat org-directory "/org.org"))
+    (add-to-list 'auto-mode-alist '("\\.trello\\'" . org-mode))
 
 
-(setq-default indent-tabs-mode nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (deeper-blue)))
- '(package-selected-packages (quote (which-key magit use-package yaml-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(setq backup-directory-alist `((".*" . ,temporary-file-directory))) (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(delete-selection-mode 1)
+
+    ;; (setq org-agenda-custom-commands
+    ;;       '(("@" "Contexts"
+    ;;          ((tags-todo "@email"
+    ;;                      ((org-agenda-overriding-header "Emails")))
+    ;;           (tags-todo "@phone"
+    ;;                      ((org-agenda-overriding-header "Phone")))))))
+    (setq org-agenda-files (list org-directory))
+
+
+
+
+    (setq org-log-done t)
+    (setq org-log-into-drawer "LOGBOOK")
+    (setq org-yank-adjusted-subtrees t)
+    (setq org-fontify-whole-heading-line t)
+
+    (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
+    (setq org-latex-remove-logfiles t)
+    (setq org-export-backends (quote (ascii html icalendar latex md odt)))
+                                                ;;; Switches off use of time-stamps when publishing. I would prefer to publish everything every time
+    (setq org-publish-use-timestamps-flag nil)
+
+    (setq-default org-html-head "body{margin:40px auto ;max-width:920px;
+line-height:1.6; font-size:18px; color:#444; padding:0 10px}
+h1,h2,h3{line-height:1.2}")
+
+    ))
+
+
+
+
+
