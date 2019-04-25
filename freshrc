@@ -30,7 +30,7 @@ fresh rosenstrauch/prezto . --file=.zprezto/ --ref=6c81815
 fresh samirahmed/fu . --file=.zprezto/modules/fu/external/
 fresh zsh-users/zsh-history-substring-search . --file=.zprezto/modules/history-substring-search/external/
 fresh zsh-users/zsh-syntax-highlighting . --file=.zprezto/modules/syntax-highlighting/external/
-fresh djui/alias-tips . --file=.zprezto/modules/alias-tips/external/
+# fresh djui/alias-tips . --file=.zprezto/modules/alias-tips/external/
 fresh Tarrasch/zsh-bd . --file=.zprezto/modules/bd/external/
 
 ## Prezto themes
