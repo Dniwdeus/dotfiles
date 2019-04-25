@@ -1,6 +1,7 @@
 [global_config]
   title_inactive_bg_color = "#687d68"
   title_inactive_fg_color = "#d5dcd5"
+  title_receive_bg_color = "#edd400"
   title_transmit_bg_color = "#262a26"
   title_transmit_fg_color = "#d5dcd5"
 [keybindings]
@@ -16,9 +17,9 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#282828"
+    background_color = "#fbf1c7"
     cursor_color = "#d5dcd5"
-    foreground_color = "#ebdbb2"
+    foreground_color = "#3c3836"
     palette = "#262a26:#ff3255:#00ff00:#c3c322:#7e97fb:#ffff00:#1999b3:#808080:#687d68:#e6193c:#29a329:#c3c322:#3d62f5:#ad2bee:#1999b3:#ffffff"
     scrollback_infinite = True
   [[readabl]]
