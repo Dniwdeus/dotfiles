@@ -52,6 +52,7 @@ ln -sf ~/.fresh/build/.zprezto/ ~/.zprezto
 
 # Backup files existing before symlinking
 backup_files_existing_before_symlinking "${HOME}/.bashrc"
+backup_files_existing_before_symlinking "${HOME}/.Xresources"
 
 # Config
 fresh-options --file
