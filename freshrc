@@ -50,6 +50,9 @@ fresh chauncey-garrett/zsh-prompt-garrett prompt_garrett_setup --file=.zprezto/m
 # now get the completed prezto setup
 ln -sf ~/.fresh/build/.zprezto/ ~/.zprezto
 
+# Backup files existing before symlinking
+backup_files_existing_before_symlinking "$(HOME)/.bashrc"
+
 # Config
 fresh-options --file
   fresh zsh/\*
