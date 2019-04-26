@@ -16,10 +16,10 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#282828"
+    background_color = "#e9b96e"
     cursor_color = "#d5dcd5"
-    foreground_color = "#ebdbb2"
-    palette = "#262a26:#ff3255:#00ff00:#c3c322:#7e97fb:#ffff00:#1999b3:#808080:#687d68:#e6193c:#29a329:#c3c322:#3d62f5:#ad2bee:#1999b3:#ffffff"
+    foreground_color = "#2e3436"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
     scrollback_infinite = True
   [[readabl]]
     background_color = "#3f413f"
