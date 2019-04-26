@@ -57,13 +57,13 @@ fresh freshshell/fresh contrib/completion/fresh-completion.zsh --file=completion
 # pareview
 # https://github.com/klausi/pareviewsh
 # http://cgit.drupalcode.org/pareviewsh/tree/README.md?id=58d4a53
-fresh squizlabs/PHP_CodeSniffer . --file=src/PHP_CodeSniffer/ --ref=2.9.1
+fresh squizlabs/PHP_CodeSniffer . --file=src/PHP_CodeSniffer/
 # fresh git://git.drupal.org/sandbox/coltrane/1921926.git DrupalSecure --file=src/PHP_CodeSniffer/CodeSniffer/Standards/DrupalSecure/
 # fresh http://git.drupal.org/project/coder.git coder_sniffer/Drupal --ref=8.x-2.x --file=src/PHP_CodeSniffer/CodeSniffer/Standards/Drupal/
 # fresh http://git.drupal.org/project/coder.git coder_sniffer/DrupalPractice --ref=8.x-2.x --file=src/PHP_CodeSniffer/CodeSniffer/Standards/DrupalPractice/
 
-ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcs ~/bin/phpcs
-ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf ~/bin/phpcbf
+ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/bin/phpcs ~/bin/phpcs
+ln -sf $HOME/.fresh/build/src/PHP_CodeSniffer/bin/phpcbf ~/bin/phpcbf
 
 
 # terminator config
@@ -72,8 +72,8 @@ ln -sf ~/.dotfiles/config/terminator/config ~/.config/terminator/config
 ln -sf ~/.dotfiles/config/xfce4/terminal/terminalrc ~/.config/xfce4/terminal/terminalrc
 fresh Xresources --file
 fresh_after_build() {
-        chmod +x $HOME/bin/phpcs
-        chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/scripts/phpcbf
+        chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/bin/phpcs
+        chmod +x $HOME/.fresh/build/src/PHP_CodeSniffer/bin/phpcbf
 #        chmod +x $HOME/.fresh/build/.zprezto/modules/alias-tips/external/alias-tips.py
 #        chmod +x $HOME/.fresh/build/.zprezto/modules/fu/external/fu
 
