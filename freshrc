@@ -51,7 +51,7 @@ fresh chauncey-garrett/zsh-prompt-garrett prompt_garrett_setup --file=.zprezto/m
 ln -sf ~/.fresh/build/.zprezto/ ~/.zprezto
 
 # Backup files existing before symlinking
-backup_files_existing_before_symlinking "$(HOME)/.bashrc"
+backup_files_existing_before_symlinking "${HOME}/.bashrc"
 
 # Config
 fresh-options --file
@@ -59,7 +59,7 @@ fresh-options --file
   fresh bashrc
 fresh-options
 
-# fresh freshshell/fresh contrib/completion/fresh-completion.bash --file=~/.bashrc
+fresh freshshell/fresh contrib/completion/fresh-completion.bash --file=~/.bashrc
 
 # adding autocompletions to shell.sh
 fresh freshshell/fresh contrib/completion/fresh-completion.zsh --file=completion/_fresh
