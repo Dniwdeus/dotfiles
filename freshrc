@@ -16,6 +16,9 @@ backup_files_existing_before_symlinking() {
   fi
 }
 
+# create directories
+mkdir -p ~/bin
+
 # bin commands
 fresh-options --bin
   fresh freshshell/fresh bin/fresh
