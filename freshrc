@@ -18,6 +18,7 @@ backup_files_existing_before_symlinking() {
 
 # create directories
 mkdir -p ~/bin
+mkdir -p ~/.config/terminator
 
 # bin commands
 fresh-options --bin
