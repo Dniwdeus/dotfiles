@@ -20,6 +20,7 @@ backup_files_existing_before_symlinking() {
 mkdir -p ~/bin
 mkdir -p ~/.config/terminator
 mkdir -p ~/.config/xfce4/terminal
+mkdir -p ~/.emacs.d
 
 # bin commands
 fresh-options --bin
