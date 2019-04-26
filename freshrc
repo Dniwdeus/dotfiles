@@ -59,7 +59,7 @@ fresh-options --file
   fresh bashrc
 fresh-options
 
-fresh freshshell/fresh contrib/completion/fresh-completion.bash --file=~/.bashrc
+# fresh freshshell/fresh contrib/completion/fresh-completion.bash --file=~/.bashrc
 
 # adding autocompletions to shell.sh
 fresh freshshell/fresh contrib/completion/fresh-completion.zsh --file=completion/_fresh
