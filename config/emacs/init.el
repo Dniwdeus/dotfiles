@@ -49,6 +49,11 @@
     :bind ("C-c C-g b" . magit-blame-mode))
  )
 
+;; load ecloud into emacs
+
+(add-to-list 'load-path "~/.emacs.d/packages/ecloud/")
+(require 'ecloud)
+
 ;; configure which-key to remember key-bindings
 
 (use-package which-key
