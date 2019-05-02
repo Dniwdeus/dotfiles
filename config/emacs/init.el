@@ -47,9 +47,18 @@
                  (set-fill-column 80))))
   (use-package magit-blame
     :bind ("C-c C-g b" . magit-blame-mode))
+  (use-package magit-popup
+    :ensure t)
  )
 
 ;; load ecloud into emacs
+(use-package s
+  :ensure t)
+(use-package f
+  :ensure t)
+
+(add-to-list 'load-path "~/.emacs.d/packages/asoc/")
+(require 'asoc)
 
 (add-to-list 'load-path "~/.emacs.d/packages/ecloud/")
 (require 'ecloud)
