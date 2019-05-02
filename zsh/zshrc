@@ -17,3 +17,4 @@ fi
 # Customize to your needs...
 
 path+=~/bin
+path+=~/.local/bin
