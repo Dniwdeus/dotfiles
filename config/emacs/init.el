@@ -22,6 +22,14 @@
 ;; load global configs for emacs
 (load-file "~/.emacs.d/elisp/global-settings.el")
 
+;; load restclient
+(use-package restclient
+  :ensure t
+  :defer t)
+(use-package ob-restclient
+  :ensure t
+  :defer t)
+
 ;; configure magit
 
 (use-package magit
