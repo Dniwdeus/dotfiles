@@ -63,6 +63,17 @@
 (add-to-list 'load-path "~/.emacs.d/packages/ecloud/")
 (require 'ecloud)
 
+;; load org-board into emacs
+
+(use-package org-board
+  :bind (
+         ("C-c bo" . obo)
+         ("C-c ba" . oba))
+  :init
+  (defalias 'obo #'org-board-open)
+  (defalias 'oba #'org-board-archive)
+  :ensure t)
+
 ;; configure which-key to remember key-bindings
 
 (use-package which-key
@@ -221,9 +232,6 @@ line-height:1.6; font-size:18px; color:#444; padding:0 10px}
 h1,h2,h3{line-height:1.2}")
 
     ))
-
-
-
 
 
 (custom-set-variables
