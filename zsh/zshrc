@@ -16,5 +16,9 @@ fi
 
 # Customize to your needs...
 
+# load path for bin
 path+=~/bin
 path+=~/.local/bin
+
+# show pwd in prompt
+PROMPT="%~$ "
