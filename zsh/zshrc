@@ -21,4 +21,4 @@ path+=~/bin
 path+=~/.local/bin
 
 # show pwd in prompt
-PROMPT="%~$ "
+PROMPT+="%2~$ "
