@@ -69,6 +69,13 @@
     :ensure t)
  )
 
+;; git timemachine
+(use-package git-timemachine
+  :defer 1
+  :diminish
+  :ensure t)
+
+
 ;; load ecloud into emacs
 (use-package s
   :ensure t)
