@@ -43,12 +43,12 @@
 ;; configure magit
 
 (use-package magit
-  :commands (magit-status magit-blame magit-mode)
+  :commands (magit-status magit-blame magit-mode magit-log-buffer-file)
   :ensure t
   :bind (("C-x g" . magit-status)
-         ("C-c C-g l" . magit-file-log)
+         ("C-c C-g l" . magit-log-buffer-file)
          ("C-c C-g c" . magit-commit)
-         ("C-c C-g f" . magit-grep))
+         ("C-c C-g f" . vc-git-grep))
   :config
   (progn
     ;; Set `magit-status' fullscreen
@@ -64,13 +64,14 @@
                  (flyspell-mode)
                  (set-fill-column 80))))
   (use-package magit-blame
-    :bind ("C-c C-g b" . magit-blame-mode))
+    :bind ("C-c C-g b" . magit-blame))
   (use-package magit-popup
     :ensure t)
  )
 
 ;; git timemachine
 (use-package git-timemachine
+  :bind ("C-c C-g h" . git-timemachine))
   :defer 1
   :diminish
   :ensure t)
