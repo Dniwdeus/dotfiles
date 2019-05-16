@@ -21,5 +21,25 @@ path+=~/bin
 path+=~/.local/bin
 path+=/run/media/dniwdeus/20b914b0-837a-46d5-ab7f-4f01aff92f03/tools/boxfuse
 
-# show pwd in prompt
-PROMPT+="%2~$ "
+# fetch git_status
+parse_git_branch() {
+    git_status="$(git status 2> /dev/null)"
+    pattern="On branch ([^[:space:]]*)"
+    if [[ ! ${git_status} =~ "(working (tree|directory) clean)" ]]; then
+        state="*"
+    fi
+    if [[ ${git_status} =~ ${pattern} ]]; then
+      branch=${match[1]}
+      branch_cut=${branch:0:35}
+      if (( ${#branch} > ${#branch_cut} )); then
+          echo "(${branch_cut}…${state})"
+      else
+          echo "(${branch}${state})"
+      fi
+    fi
+}
+
+# configure prompt
+## show PWD and git-branch
+setopt PROMPT_SUBST
+PROMPT='%2~$(parse_git_branch)$'
