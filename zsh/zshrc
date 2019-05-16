@@ -19,6 +19,7 @@ fi
 # load path for bin
 path+=~/bin
 path+=~/.local/bin
+path+=/run/media/dniwdeus/20b914b0-837a-46d5-ab7f-4f01aff92f03/tools/boxfuse
 
 # show pwd in prompt
 PROMPT+="%2~$ "
