@@ -71,7 +71,7 @@
 
 ;; git timemachine
 (use-package git-timemachine
-  :bind ("C-c C-g h" . git-timemachine))
+  :bind ("C-c C-g h" . git-timemachine)
   :defer 1
   :diminish
   :ensure t)
