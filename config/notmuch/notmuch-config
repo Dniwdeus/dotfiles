@@ -1,0 +1,19 @@
+[database]
+# use the MAILDIR variable
+#path="$HOME/placemarks/Maildir"
+
+[user]
+name=Dniwdeus
+
+[new]
+tags=unread;inbox;
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true
+
+[crypto]
+gpg_path=gpg
