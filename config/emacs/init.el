@@ -416,6 +416,28 @@ X-Message-SMTP-Method: sendmail
 
 
   (add-hook 'message-mode-hook 'turn-on-flyspell 'append))
+
+(use-package yaml-mode
+  :ensure t
+  :defer t
+  :mode "\\.ya?ml'"
+  :init
+  (defun yaml-mode-syntax-propertize-function (beg end)
+  ;;; properly highlight comments in yaml
+    (save-excursion
+      (goto-char beg)
+      (while (search-forward "#" end t)
+        (save-excursion
+          (forward-char -1)
+          (if (bolp)
+              (put-text-property (point) (1+ (point))
+                                 'syntax-table (string-to-syntax "<"))
+            (forward-char -1)
+            (when (looking-at "[ \t]")
+              (forward-char 1)
+              (put-text-property (point) (1+ (point))
+                                 'syntax-table (string-to-syntax "<")))))))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
