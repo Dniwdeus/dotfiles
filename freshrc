@@ -32,6 +32,8 @@ fresh pam_environment --file
 ln -sf ~/sensitive/mbsync/mbsyncrc ~/.mbsyncrc 
 ln -sf ~/sensitive/msmtp/msmtprc ~/.msmtprc
 
+# symlinked scripts folder
+ln -sf ~/.dotfiles/scripts/ ~/
 # bin commands
 fresh-options --bin
   fresh freshshell/fresh bin/fresh
