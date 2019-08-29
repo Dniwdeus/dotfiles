@@ -185,6 +185,7 @@
    ;; ("C-c j" . org-clock-goto) ;;; jump to current task from anywhere
    ;; ("C-c C-w" . org-refile)
    ("C-c d" . org-refile-to-datetree)
+   ("C-c M-," . org-insert-structure-template)
    ;; ("C-c i s" . my-org-screenshot)
    ;; ("C-c o c" . org-contacts)
    ;; ("C-c ," . org-cycle-agenda-files)
