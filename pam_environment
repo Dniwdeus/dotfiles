@@ -1,0 +1,4 @@
+XDG_CONFIG_HOME  DEFAULT=@{HOME}/.config
+
+NOTMUCH_CONFIG   DEFAULT=${XDG_CONFIG_HOME}/notmuch/notmuch-config
+MAILDIR          DEFAULT=@{HOME}/placemarks/Maildir/
