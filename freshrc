@@ -34,6 +34,12 @@ ln -sf ~/sensitive/msmtp/msmtprc ~/.msmtprc
 
 # symlinked scripts folder
 ln -sf ~/.dotfiles/scripts/ ~/
+# notmuch
+
+fresh config/notmuch/hooks/post-new --file=~/.config/notmuch/hooks/post-new
+fresh config/notmuch/notmuch-config --file=~/.config/notmuch/notmuch-config
+fresh ../sensitive/config/notmuch/notmuch-sensitive-config --file=~/.config/notmuch/notmuch-config  --marker
+
 # bin commands
 fresh-options --bin
   fresh freshshell/fresh bin/fresh
