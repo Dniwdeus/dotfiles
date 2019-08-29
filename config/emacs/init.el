@@ -260,6 +260,162 @@ h1,h2,h3{line-height:1.2}")
     ))
 
 
+
+(use-package notmuch
+  :commands notmuch notmuch-search-reply-to-thread-sender
+  :defer 8
+  :config
+
+  (define-key notmuch-hello-mode-map "g"
+    'notmuch-poll-and-refresh-this-buffer)
+
+  (define-key notmuch-hello-mode-map "f"
+    (lambda ()
+      (interactive)
+      (notmuch-hello-search "tag:followup")))
+
+  (define-key notmuch-hello-mode-map "i"
+    (lambda ()
+      (interactive)
+      (notmuch-hello-search "tag:inbox")))
+
+  (define-key notmuch-hello-mode-map "u"
+    (lambda ()
+      (interactive)
+      (notmuch-hello-search "tag:unread")))
+
+  (define-key notmuch-hello-mode-map "a"
+    (lambda ()
+      (interactive)
+      (notmuch-hello-search "tag:archive")))
+
+  (define-key notmuch-search-mode-map "g"
+    'notmuch-poll-and-refresh-this-buffer)
+
+  (define-key notmuch-search-mode-map "K"
+    (lambda ()
+      "sKip: toggle deleted tag for thread"
+      (interactive)
+      (if (member "skipped" (notmuch-search-get-tags))
+          (notmuch-search-tag '("-skipped"))
+        (notmuch-search-tag '("+skipped" "-inbox" "-unread")))))
+
+
+  (define-key notmuch-search-mode-map "D"
+    (lambda ()
+      "Loose: toggle deleted tag for thread"
+      (interactive)
+      (if (member "deleted" (notmuch-search-get-tags))
+          (notmuch-search-tag '("-deleted"))
+        (notmuch-search-tag '("+deleted" "-inbox" "-unread")))))
+
+  (define-key notmuch-search-mode-map "F"
+    (lambda ()
+      "toggle followup tag for thread"
+      (interactive)
+      (if (member "followup" (notmuch-search-get-tags))
+          (notmuch-search-tag '("-followup"))
+        (notmuch-search-tag '("+followup")))))
+
+  (define-key notmuch-search-mode-map "!"
+    (lambda ()
+      "toggle unread tag for thread"
+      (interactive)
+      (if (member "unread" (notmuch-search-get-tags))
+          (notmuch-search-tag '("-unread"))
+        (notmuch-search-tag '("+unread")))))
+
+  (define-key notmuch-search-mode-map "a"
+    (lambda ()
+      "toggle archive"
+      (interactive)
+      (if (member "archive" (notmuch-search-get-tags))
+          (notmuch-search-tag '("-archive"))
+        (notmuch-search-tag '("+archive" "-inbox" "-unread")))))
+
+  :ensure t)
+
+(use-package org-notmuch
+  :config (load-file "~/.emacs.d/notmuch-config.el")
+  :disabled t
+  :after (org notmuch))
+
+(use-package helm-notmuch
+  :defer 8
+  :after notmuch helm
+  :bind
+  (:map helm-command-map
+        ("m" . helm-notmuch))
+  :config
+  (define-key notmuch-hello-mode-map "S" 'helm-notmuch)
+  (define-key notmuch-show-mode-map "S" 'helm-notmuch)
+  (define-key notmuch-search-mode-map "S" 'helm-notmuch)
+  :ensure t)
+
+(use-package notmuch-show
+  :defer t
+  :config
+  (define-key notmuch-show-mode-map "\C-c\C-o" 'browse-url-at-point)
+  (define-key notmuch-show-mode-map "K"
+    (lambda ()
+      "mark message as SKIPPED to be considered for filtering to ignored"
+      (interactive)
+      (notmuch-show-tag (list "+SKIPPED" "-inbox"))))
+
+
+  (define-key notmuch-show-mode-map "D"
+    (lambda ()
+      "Loose: toggle deleted tag for message"
+      (interactive)
+      (if (member "deleted" (notmuch-show-get-tags))
+          (notmuch-show-tag '("-deleted"))
+        (notmuch-show-tag '("+deleted" "-inbox" "-unread")))))
+
+
+  (define-key notmuch-show-mode-map "F"
+    (lambda ()
+      "toggle followup"
+      (interactive)
+      (if (member "followup" (notmuch-show-get-tags))
+          (notmuch-show-tag '("-followup"))
+        (notmuch-show-tag '("+followup" "-inbox" "-unread")))))
+
+  (define-key notmuch-show-mode-map "A"
+    (lambda ()
+      "toggle archive"
+      (interactive)
+      (if (member "archive" (notmuch-show-get-tags))
+          (notmuch-show-tag '("-archive"))
+        (notmuch-show-tag '("+archive" "-inbox" "-unread"))))))
+
+(use-package message-mode
+  :commands message-mode
+  :disabled nil
+  :no-require t
+  :defer t
+  :config
+  (message-default-mail-headers "
+Cc:
+X-Message-SMTP-Method: sendmail
+")
+
+  ;; This is needed to allow msmtp to do its magic:
+  (setq-default message-sendmail-f-is-evil 't)
+
+  ;;need to tell msmtp which account we're using
+  (setq-default message-sendmail-extra-arguments '("--read-envelope-from"))
+  (setq mail-specify-envelope-from t)
+  (setq-default mail-envelope-from 'header)
+  (setq-default message-sendmail-envelope-from 'header)
+  (setq-default message-send-mail-function 'message-send-mail-with-sendmail)
+
+  ;;use msmtp instead of sendmail
+  (setq-default sendmail-program "/usr/bin/msmtp")
+
+  (setq message-kill-buffer-on-exit t)
+
+
+  (add-hook 'message-mode-hook 'turn-on-flyspell 'append))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
