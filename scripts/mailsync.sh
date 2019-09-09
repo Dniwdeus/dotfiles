@@ -15,8 +15,6 @@ then
 
   for mdir in $MDIR; do
     echo "Processing $mdir"
-    echo "Tagging $mdir"
-    notmuch tag +${mdir} -- folder:$mdir/
     for fdir in $(ls -d ${MAILDIR}$mdir/*); do
       if [ $(basename $fdir) != "INBOX" ] && [ $(basename $fdir) != "new" ]; then
         echo "Tagging for $(basename $fdir)"
