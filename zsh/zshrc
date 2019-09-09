@@ -5,15 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-if [ -f ~/.fresh/build/shell.sh ]; then
-    source ~/.fresh/build/shell.sh
-fi
-
 # Customize to your needs...
 
 # load path for bin
@@ -43,3 +34,12 @@ parse_git_branch() {
 ## show PWD and git-branch
 setopt PROMPT_SUBST
 PROMPT='%2~$(parse_git_branch)$'
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+if [ -f ~/.fresh/build/shell.sh ]; then
+    source ~/.fresh/build/shell.sh
+fi
