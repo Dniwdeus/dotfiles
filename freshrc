@@ -43,19 +43,19 @@ fresh ../sensitive/config/notmuch/notmuch-sensitive-config --file=~/.config/notm
 # bin commands
 fresh-options --bin
   fresh freshshell/fresh bin/fresh
-  fresh clvv/fasd fasd
   fresh klausi/pareviewsh pareview.sh --ref=7.x-1.x
   fresh alicraigmile/show-wip show-wip
   fresh docksal/docksal bin/fin --ref=v1.10.1
+  fresh clvv/fasd fasd
 fresh-options
 
-fresh rosenstrauch/prezto . --file=.zprezto/ --ref=6c81815
+fresh rosenstrauch/prezto . --file=zprezto/ --ref=6c81815
 
-fresh samirahmed/fu . --file=.zprezto/modules/fu/external/
-fresh zsh-users/zsh-history-substring-search . --file=.zprezto/modules/history-substring-search/external/
-fresh zsh-users/zsh-syntax-highlighting . --file=.zprezto/modules/syntax-highlighting/external/
-# fresh djui/alias-tips . --file=.zprezto/modules/alias-tips/external/
-fresh Tarrasch/zsh-bd . --file=.zprezto/modules/bd/external/
+fresh samirahmed/fu . --file=zprezto/modules/fu/external/
+fresh zsh-users/zsh-history-substring-search . --file=zprezto/modules/history-substring-search/external/
+fresh zsh-users/zsh-syntax-highlighting . --file=zprezto/modules/syntax-highlighting/external/
+fresh djui/alias-tips . --file=zprezto/modules/alias-tips/external/
+fresh Tarrasch/zsh-bd . --file=zprezto/modules/bd/external/
 
 ## Prezto themes
 fresh sindresorhus/pure  async.zsh --file=.zprezto/modules/prompt/functions/async
