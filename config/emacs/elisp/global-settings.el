@@ -46,4 +46,9 @@
         (t (self-insert-command (or arg 1)))))
 
 ;; where emacs looks for credentials
-(setq auth-sources '((:source "~/.authinfo.gpg")))
+
+(setq auth-sources
+   (quote
+    ("~/.authinfo" "~/.authinfo.gpg" "~/.netrc"
+     (:source "(password-store)"
+              (:host t)))))
