@@ -32,15 +32,30 @@
 (package-initialize)                ;; Initialize & Install Package
 
 
-;; load restclient
+;;; * my custom functions
+
+(defun my/find-user-init-file ()
+  "Edit the `user-init-file', in another window."
+  (interactive)
+  (find-file-other-window user-init-file))
+;;; * my global keymaps
+
+
+(global-set-key (kbd "\C-c gi") 'my/find-user-init-file)
+
+(defun load-directory (dir)
+  (let ((load-it (lambda (f) (load-file (concat (file-name-as-directory dir) f)))))
+    (mapc load-it (directory-files dir nil "\\.el$"))))
+
+;;; * load restclient
 (use-package restclient
   :ensure t
-  :defer t)
+)
 (use-package ob-restclient
   :ensure t
-  :defer t)
+)
 
-;; configure magit
+;;; * configure magit
 
 (use-package magit
   :commands (magit-status magit-blame magit-mode magit-log-buffer-file)
