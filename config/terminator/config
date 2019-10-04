@@ -17,7 +17,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#32302d"
+    background_color = "#888a85"
     cursor_color = "#d5dcd5"
     foreground_color = "#d5dcd5"
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
