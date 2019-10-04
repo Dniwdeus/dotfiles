@@ -467,4 +467,16 @@ X-Message-SMTP-Method: sendmail
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:inherit nil :stipple nil :background "#3f413f" :foreground "#d5dcd5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 198 :width normal :foundry "ADBO" :family "Source Code Pro"))))
+ '(cursor ((t (:background "orange red"))))
+ '(custom-group-tag ((t (:inherit variable-pitch :foreground "brightyellow" :weight bold :height 1.2))))
+ '(custom-variable-tag ((t (:foreground "cyan" :weight bold))))
+ '(font-lock-function-name-face ((t (:foreground "deep sky blue"))))
+ '(font-lock-keyword-face ((t (:foreground "color-141"))))
+ '(font-lock-string-face ((t (:foreground "color-207"))))
+ '(helm-selection ((t (:background "dark orange" :distant-foreground "black"))))
+ '(highlight ((t (:background "color-53"))))
+ '(link ((t (:foreground "brightcyan" :underline t))))
+ '(link-visited ((t (:inherit link :foreground "brightmagenta"))))
+ '(magit-bisect-bad ((t (:foreground "red"))))
+ '(minibuffer-prompt ((t (:foreground "brightwhite" :height 1.5)))))
