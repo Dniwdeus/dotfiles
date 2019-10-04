@@ -454,6 +454,254 @@ X-Message-SMTP-Method: sendmail
               (put-text-property (point) (1+ (point))
                                  'syntax-table (string-to-syntax "<")))))))))
 
+
+
+(use-package helm
+
+  :commands (helm-mini helm-M-x helm-all-mark-rings helm-show-kill-ring)
+  :demand t
+  :delight (helm-mode)
+  :ensure t
+  :init
+  (setq helm-command-prefix-key "C-c h")
+
+  (require 'helm-config)
+  :bind (("M-x" . helm-M-x)
+         ("C-c h"   . helm-command-prefix)
+         ("C-c C-SPC" . helm-all-mark-rings) ; I modified the keybinding
+         ("M-y" . helm-show-kill-ring)
+         ("C-x C-f" . helm-find-files)
+         ("C-x b" . bookmark-jump)
+         ("C-h )" . helm-execute-kmacro)
+         ("C-x C-b" . helm-mini) ;; (helm-bind-helm-mini)
+
+         :map helm-command-map
+         ("o" . helm-occur)
+         (")" . helm-execute-kmacro)
+         ;; ("f" . helm-find-files)
+         ;; ("b" . helm-mini)
+         ;;                ("g" . helm-google-suggest)
+         ;; ("l" . helm-buffers-list)
+         ;; ("p" . nil)
+         ;; ("i" . helm-imenu)
+         ;; ("r" . helm-register)    ; C-x r SPC and C-x r j
+         ;; ("M-:" . helm-eval-expression-with-eldoc)
+
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+         ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
+         ("C-z" . helm-select-action) ; list actions using C-z
+
+         :map minibuffer-local-map
+         ("C-c C-l" . helm-minibuffer-history))
+
+
+  :config
+
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+
+
+  (setq helm-M-x-fuzzy-match t
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match    t
+        helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match    t
+        helm-locate-fuzzy-match t
+        helm-apropos-fuzzy-match t
+        helm-lisp-fuzzy-completion t)
+
+  (helm-mode 1))
+
+
+
+(use-package helm-descbinds                        ; (helm-descbinds-setup)
+  :ensure t
+  :defer 8
+  :after helm
+  :bind
+  (:map helm-command-map
+        ("hk" . helm-descbinds))
+  :init
+  (fset 'describe-bindings 'helm-descbinds)
+  )
+
+(use-package helm-describe-modes
+  :after helm
+  :defer 8
+  :ensure t
+  :bind
+  (:map helm-command-map
+        ("hmm" . helm-describe-modes))
+  )
+
+
+(use-package helm-org
+  :ensure t
+  :defer 8
+  :after (org helm)
+  :defer t
+
+  )
+
+(use-package helm-org-rifle
+  :ensure t
+  :defer 8
+  :after (org helm helm-org)
+  :defer t
+  :bind (:map helm-command-map
+              ("R" . helm-org-rifle))
+  )
+
+(use-package helm-swoop
+  :defer 8
+  :ensure t
+  :bind
+  (("C-S-s" . helm-swoop)
+   ("M-i" . helm-swoop)
+   ("M-s s" . helm-swoop)
+   ("M-s M-s" . helm-swoop)
+   ("M-I" . helm-swoop-back-to-last-point)
+   ("C-c M-i" . helm-multi-swoop)
+   ("C-x M-i" . helm-multi-swoop-all)
+   )
+  :after helm
+  :config
+  (progn
+    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)))
+
+
+(use-package org-super-agenda
+  :ensure t
+  :config
+  (org-super-agenda-mode)
+  (setq org-super-agenda-groups '(
+                                  (:name "Alltodo Items"
+                                         :time-grid nil
+                                         :todo "TODO")
+                                  (:name "Next Items"
+                                         :time-grid t
+                                         :tag ("NEXT" "outbox"))
+                                  (:name "Important"
+                                         :priority "A")
+                                  (:name "Today"
+                                         :time-grid t
+                                         :scheduled today)
+
+                                  (:priority<= "B"
+                                               :order 1)
+                                  (:name "Due today"
+                                         :deadline today)
+
+                                  (:name "Overdue"
+                                         :deadline past)
+                                  (:name "Due soon"
+                                         :deadline future)
+                                  (:name "Waiting"
+                                         :todo "WAIT")
+                                  (:order-multi (1 (:name "Done today"
+                                                          :and (:regexp "State \"DONE\""
+                                                                        :log t))
+                                                   (:name "Clocked today"
+                                                          :log t)))) ))
+
+(use-package rainbow-mode
+  :ensure t
+  )
+(use-package dired
+  :commands (dired-jump-other-window dired dired-undo dired-jump)
+  :defer 1
+  :bind
+  (:map dired-mode-map
+        ("C-c C-w" . 'browse-url-of-dired-file)
+        ("*." . 'dired-mark-extension))
+
+  :init
+  (defun my-dired-mode-setup ()
+    "to be run as hook for `dired-mode'."
+    (dired-hide-details-mode 1))
+  :config
+
+  (setq image-dired-thumb-height 400
+        image-dired-thumb-size 400
+        image-dired-thumb-width 400)
+
+  (setq
+   dired-dwim-target t            ;; (dired-dwim-target)
+   dired-recursive-copies 'always         ; "always" means no asking
+   dired-recursive-deletes 'top           ; "top" means ask once for top level directory
+   dired-listing-switches "-lha"          ; human-readable listing
+   )
+
+  (add-hook 'dired-mode-hook 'my-dired-mode-setup)
+  (add-hook 'dired-mode-hook 'auto-revert-mode) ;; (dired-auto-revert-mode)
+
+  ;; if it is not Windows, use the following listing switches
+  (when (not (eq system-type 'windows-nt))
+    (setq dired-listing-switches "-lha --group-directories-first"))
+
+
+  (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window))
+
+
+(use-package outshine
+  :defer 1
+  :disabled t
+  :config
+
+  (defun -add-font-lock-kwds (FONT-LOCK-ALIST)
+    (font-lock-add-keywords
+     nil (--map (-let (((rgx uni-point) it))
+                  `(,rgx (0 (progn
+                              (compose-region (match-beginning 1) (match-end 1)
+                                              ,(concat "\t" (list uni-point)))
+                              nil))))
+                FONT-LOCK-ALIST)))
+
+  (defmacro add-font-locks (FONT-LOCK-HOOKS-ALIST)
+    `(--each ,FONT-LOCK-HOOKS-ALIST
+       (-let (((font-locks . mode-hooks) it))
+         (--each mode-hooks
+           (add-hook it (-partial '-add-font-lock-kwds
+                                  (symbol-value font-locks)))))))
+
+  (defconst emacs-outlines-font-lock-alist
+    ;; Outlines
+    '(("\\(^;;;\\) "          ?■)
+      ("\\(^;;;;\\) "         ?○)
+      ("\\(^;;;;;\\) "        ?✸)
+      ("\\(^;;;;;;\\) "       ?✿)))
+
+  (defconst lisp-outlines-font-lock-alist
+    ;; Outlines
+    '(("\\(^;; \\*\\) "          ?■)
+      ("\\(^;; \\*\\*\\) "       ?○)
+      ("\\(^;; \\*\\*\\*\\) "    ?✸)
+      ("\\(^;; \\*\\*\\*\\*\\) " ?✿)))
+
+  (defconst python-outlines-font-lock-alist
+    '(("\\(^# \\*\\) "          ?■)
+      ("\\(^# \\*\\*\\) "       ?○)
+      ("\\(^# \\*\\*\\*\\) "    ?✸)
+      ("\\(^# \\*\\*\\*\\*\\) " ?✿)))
+
+  (add-font-locks
+   '((emacs-outlines-font-lock-alist emacs-lisp-mode-hook)
+     (lisp-outlines-font-lock-alist clojure-mode-hook hy-mode-hook)
+     (python-outlines-font-lock-alist python-mode-hook)))
+
+  (setq outshine-use-speed-commands t)
+
+  ;; Easier navigation for source files, especially this one.
+
+  :bind (:map outshine-mode-map
+              ("<S-iso-lefttab>" . outshine-cycle-buffer)
+              ("<backtab>" . outshine-cycle-buffer)
+              )
+  :hook (emacs-lisp-mode . outshine-mode)
+  :ensure t
+  )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
