@@ -122,3 +122,9 @@ fresh techniumlabs/ecloud . --file=~/.emacs.d/packages/ecloud/
 #########
 
 fresh shell/aliases.sh
+
+
+# I3
+
+backup_files_existing_before_fresh "${HOME}/.config/i3"
+ln -sf ~/.dotfiles/config/i3 ~/.config/
