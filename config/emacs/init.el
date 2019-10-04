@@ -459,9 +459,21 @@ X-Message-SMTP-Method: sendmail
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(delete-selection-mode t)
+ '(notmuch-saved-searches
+   (quote
+    ((:name "inbox" :query "tag:inbox" :key "i")
+     (:name "unread" :query "tag:unread" :key "u")
+     (:name "flagged" :query "tag:flagged" :key "f")
+     (:name "sent" :query "tag:sent" :key "t")
+     (:name "drafts" :query "tag:draft" :key "d")
+     (:name "all mail" :query "*" :key "a")
+     (:name "archive2017" :query "date:2017")
+     (:name "tomymovieguru" :query "to:\"c.avgulas@mymovie.guru\""))))
+ '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
-    (yaml-mode helm-notmuch notmuch org-plus-contrib which-key magit use-package))))
+    (password-store forge org-trello org-super-agenda helm-swoop helm-org-rifle helm-org helm-describe-modes helm-descbinds org-notmuch yaml-mode helm-notmuch notmuch org-plus-contrib which-key magit use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
