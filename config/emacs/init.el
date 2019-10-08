@@ -275,6 +275,15 @@ h1,h2,h3{line-height:1.2}")
 
     ))
 
+(use-package org-trello
+:defer 1
+  :mode ("\\.trello\\'" . org-mode)
+  :interpreter "org"
+  :ensure t
+  :functions org-trello
+  :config
+  (message "now `org-trello' is loaded")
+  :commands (org-trello-mode))
 
 
 (use-package notmuch
