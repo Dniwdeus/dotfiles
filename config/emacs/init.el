@@ -242,11 +242,11 @@
      ))
   :config
   (progn
-  (add-hook 'org-mode-hook
-     (lambda ()
-       (let ((filename (buffer-file-name (current-buffer))))
-         (when (and filename (string= "trello" (file-name-extension filename)))
-           (org-trello-mode)))))
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (let ((filename (buffer-file-name (current-buffer))))
+                  (when (and filename (string= "trello" (file-name-extension filename)))
+                    (org-trello-mode)))))
 
     (setq org-directory "~/org/")
     (setq org-default-notes-file (concat org-directory "/org.org"))
