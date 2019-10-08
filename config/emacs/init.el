@@ -91,7 +91,6 @@
   ;; FIXME https://github.com/magit/ghub/issues/81
   (setq ghub-use-workaround-for-emacs-bug nil)
 
-;; git timemachine
   (require 'auth-source-pass)
   (defvar my-ghub-token-cache nil)
 
@@ -111,12 +110,16 @@
   (load-directory "~/sensitive/config/emacs/")
   )
 
+;;; * git timemachine
 (use-package git-timemachine
   :bind ("C-c C-g h" . git-timemachine)
-  :defer 1
+
   :diminish
   :ensure t)
 
+(use-package password-store
+  :defer 1
+  :ensure t)
 
 ;; load ecloud into emacs
 (use-package s
