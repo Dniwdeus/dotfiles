@@ -1,4 +1,4 @@
-;; setup package manager for emacs
+;;; * setup package manager for emacs
 (require 'package)
 (setq package-enable-at-startup t)
 
@@ -6,7 +6,7 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-;; bootstrap use package [fn:11]
+;;; * bootstrap use package [fn:11]
 
 
 (unless (package-installed-p 'use-package)
@@ -14,15 +14,15 @@
   (package-install 'use-package))
 (require 'use-package)
 
-;; for now keep usepackage verbose.
+;;; * for now keep usepackage verbose.
 (setq use-package-verbose t
       use-package-expand-minimally nil
       use-package-compute-statistics t)
 
-;; load global configs for emacs
+;;; * load global configs for emacs
 (load-file "~/.emacs.d/elisp/global-settings.el")
 
-;; install org plus contrib with either package.el[fn:12]
+;;; * install org plus contrib with either package.el[fn:12]
 
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
@@ -121,7 +121,7 @@
   :defer 1
   :ensure t)
 
-;; load ecloud into emacs
+;;; * load ecloud into emacs
 (use-package s
   :ensure t)
 (use-package f
@@ -133,7 +133,7 @@
 (add-to-list 'load-path "~/.emacs.d/packages/ecloud/")
 (require 'ecloud)
 
-;; load org-board into emacs
+;;; * load org-board into emacs for archiving entire websites
 
 (use-package org-board
   :bind (
@@ -144,7 +144,7 @@
   (defalias 'oba #'org-board-archive)
   :ensure t)
 
-;; configure which-key to remember key-bindings
+;;; * configure which-key to remember key-bindings
 
 (use-package which-key
   :defer 5
@@ -390,8 +390,8 @@ h1,h2,h3{line-height:1.2}")
   :ensure t)
 
 (use-package org-notmuch
-  :config (load-file "~/.emacs.d/notmuch-config.el")
-  :disabled t
+
+
   :after (org notmuch))
 
 (use-package helm-notmuch
