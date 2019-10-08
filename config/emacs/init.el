@@ -102,6 +102,15 @@
            (setq my-ghub-token-cache
                  (funcall orig-func host username package nocreate forge))))))
 
+(use-package forge
+  :after (ghub magit)
+
+  :ensure t
+  :config
+  (add-to-list 'forge-alist '("gitlab.com" "gitlab.com/api/v4" "gitlab.com" forge-gitlab-repository))
+  (load-directory "~/sensitive/config/emacs/")
+  )
+
 (use-package git-timemachine
   :bind ("C-c C-g h" . git-timemachine)
   :defer 1
