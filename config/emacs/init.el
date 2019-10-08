@@ -82,7 +82,14 @@
     :bind ("C-c C-g b" . magit-blame))
   (use-package magit-popup
     :ensure t)
- )
+  )
+
+
+(use-package ghub
+  :ensure t
+  :config
+  ;; FIXME https://github.com/magit/ghub/issues/81
+  (setq ghub-use-workaround-for-emacs-bug nil)
 
 ;; git timemachine
 (use-package git-timemachine
