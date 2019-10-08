@@ -92,6 +92,16 @@
   (setq ghub-use-workaround-for-emacs-bug nil)
 
 ;; git timemachine
+  (require 'auth-source-pass)
+  (defvar my-ghub-token-cache nil)
+
+  (advice-add
+   'ghub--token :around
+   #'(lambda (orig-func host username package &optional nocreate forge)
+       (or my-ghub-token-cache
+           (setq my-ghub-token-cache
+                 (funcall orig-func host username package nocreate forge))))))
+
 (use-package git-timemachine
   :bind ("C-c C-g h" . git-timemachine)
   :defer 1
