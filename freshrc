@@ -126,5 +126,5 @@ fresh shell/aliases.sh
 
 # I3
 
-backup_files_existing_before_fresh "${HOME}/.config/i3"
+backup_files_existing_before_symlinking "${HOME}/.config/i3"
 ln -sf ~/.dotfiles/config/i3 ~/.config/
