@@ -769,7 +769,6 @@ X-Message-SMTP-Method: sendmail
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#3f413f" :foreground "#d5dcd5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 198 :width normal :foundry "ADBO" :family "Source Code Pro"))))
- '(cursor ((t (:background "orange red"))))
  '(custom-group-tag ((t (:inherit variable-pitch :foreground "brightyellow" :weight bold :height 1.2))))
  '(custom-variable-tag ((t (:foreground "cyan" :weight bold))))
  '(font-lock-function-name-face ((t (:foreground "deep sky blue"))))
