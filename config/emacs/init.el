@@ -756,6 +756,9 @@ X-Message-SMTP-Method: sendmail
      (:name "all mail" :query "*" :key "a")
      (:name "archive2017" :query "date:2017")
      (:name "tomymovieguru" :query "to:\"c.avgulas@mymovie.guru\""))))
+ '(org-agenda-files
+   (quote
+    ("/home/dniwdeus/org/org.org" "/home/dniwdeus/org/appguru.org" "/home/dniwdeus/org/quicklog.org")))
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
