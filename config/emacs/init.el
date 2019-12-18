@@ -307,6 +307,50 @@ h1,h2,h3{line-height:1.2}")
 
     ))
 
+
+(use-package org-clock
+  :init
+  (use-package org-timer)
+  :bind (
+         ("C-c j" . org-clock-goto) ;; jump to current task from anywhere
+         :map org-mode-map
+
+         ("C-c C-x C-x" . org-clock-in-last)
+         ("C-c C-x C-i" . org-clock-in)
+         ("C-c C-x C-o" . org-clock-out)
+         ("C-c C-x C-z" . org-resolve-clocks)
+         ("C-c C-x C-j" . org-clock-goto)
+         ("C-c j" . org-clock-goto)
+         )
+  :config
+ ;;; To save the clock history across Emacs sessions, make sure to run org-clock-save at appropriate times
+  (if (file-exists-p org-clock-persist-file)
+      (org-clock-persistence-insinuate)
+    (org-clock-save)
+    (shell-command (concat "touch " org-clock-persist-file)))
+
+  (setq org-clock-history-length 23
+        org-clock-in-resume t
+        org-clock-into-drawer t
+        org-clock-out-remove-zero-time-clocks t
+        org-clock-out-when-done t
+        org-clock-persist t
+        org-clock-persist-query-resume nil
+        org-log-done 'time
+        org-timer-default-timer 25
+        org-drawers (quote ("PROPERTIES" "LOGBOOK"))
+        org-clock-auto-clock-resolution (quote when-no-clock-is-running)
+        )
+  ;; CLOCKING Resume clocking task on clock-in if the clock is open [#1]
+
+  (setq org-agenda-log-mode-items '(state closed clock))
+
+  ;; CLOCKING Include current clocking task in clock reports [#128]
+  (setq org-clock-report-include-clocking-task t)
+
+  :hook (org-clock-out-hook . org-clock-save))
+
+
 (use-package org-capture
   :init
   (defalias 'orca #'org-capture)
