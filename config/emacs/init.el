@@ -50,10 +50,10 @@
 ;;; * load restclient
 (use-package restclient
   :ensure t
-)
+  )
 (use-package ob-restclient
   :ensure t
-)
+  )
 
 ;;; * configure magit
 
@@ -379,8 +379,10 @@ h1,h2,h3{line-height:1.2}")
   (global-set-key (kbd "C-<F12>") 'region-to-clocked-task)
 
   )
+
+
 (use-package org-trello
-:defer 1
+  :defer 1
   :mode ("\\.trello\\'" . org-mode)
   :interpreter "org"
   :ensure t
