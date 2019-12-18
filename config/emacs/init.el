@@ -121,18 +121,6 @@
   :defer 1
   :ensure t)
 
-;;; * load ecloud into emacs
-(use-package s
-  :ensure t)
-(use-package f
-  :ensure t)
-
-(add-to-list 'load-path "~/.emacs.d/packages/asoc/")
-(require 'asoc)
-
-(add-to-list 'load-path "~/.emacs.d/packages/ecloud/")
-(require 'ecloud)
-
 ;;; * load org-board into emacs for archiving entire websites
 
 (use-package org-board
