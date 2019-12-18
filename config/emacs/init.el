@@ -744,6 +744,12 @@ X-Message-SMTP-Method: sendmail
   :hook (emacs-lisp-mode . outshine-mode)
   :ensure t
   )
+
+(use-package multiple-cursors
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c m c") 'mc/edit-lines))
+
 (use-package aweshell
   :commands (aweshell-new
              aweshell-next
