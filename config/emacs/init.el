@@ -618,14 +618,15 @@ X-Message-SMTP-Method: sendmail
   :config
   (org-super-agenda-mode)
   (setq org-super-agenda-groups '(
+                                  (:name "Important"
+                                         :priority "A")
+
                                   (:name "Alltodo Items"
                                          :time-grid nil
                                          :todo "TODO")
                                   (:name "Next Items"
                                          :time-grid t
                                          :tag ("NEXT" "outbox"))
-                                  (:name "Important"
-                                         :priority "A")
                                   (:name "Today"
                                          :time-grid t
                                          :scheduled today)
