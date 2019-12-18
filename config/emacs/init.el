@@ -307,6 +307,34 @@ h1,h2,h3{line-height:1.2}")
 
     ))
 
+(use-package org-capture
+  :init
+  (defalias 'orca #'org-capture)
+  :config
+  (add-to-list 'org-capture-templates
+               '("k" "klocking"))
+  (add-to-list 'org-capture-templates
+               '("kc" "Item to Current Clocked Task" item
+                 (clock)
+                 "%i%?" :empty-lines 1))
+  (add-to-list 'org-capture-templates
+               '("kC" "Contents to Current Clocked Task" plain
+                 (clock)
+                 "%i" :immediate-finish t :empty-lines 1))
+  (add-to-list 'org-capture-templates
+
+               '("kK" "Kill-ring to Current Clocked Task" plain
+                 (clock)
+                 "%c" :immediate-finish t :empty-lines 1))
+
+  (defun region-to-clocked-task (start end)
+    "Copies the selected text to the currently clocked in org-mode task."
+    (interactive "r")
+    (org-capture-string (buffer-substring-no-properties start end) "C"))
+
+  (global-set-key (kbd "C-<F12>") 'region-to-clocked-task)
+
+  )
 (use-package org-trello
 :defer 1
   :mode ("\\.trello\\'" . org-mode)
