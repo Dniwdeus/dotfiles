@@ -830,12 +830,24 @@ X-Message-SMTP-Method: sendmail
           (format " Proj[%s]"
                   (projectile-project-name)))))
 
+(use-package ansible
+  :ensure t
+  :init
+  (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
+
+(use-package ansible-doc
+  :ensure t
+  :after ansible
+  :init
+  (add-hook 'yaml-mode-hook #'ansible-doc-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(delete-selection-mode t)
+ '(inhibit-startup-screen t)
  '(notmuch-saved-searches
    (quote
     ((:name "inbox" :query "tag:inbox" :key "i")
