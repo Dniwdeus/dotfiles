@@ -761,6 +761,74 @@ X-Message-SMTP-Method: sendmail
    ("M-'" . aweshell-search-history)
    ("C-l" . aweshell-clear-buffer))
   )
+(use-package helm-projectile
+  :ensure t
+  :defer 1
+  :after (helm projectile)
+  :bind ( ("C-c h Pf" . helm-projectile-find-file)
+          ("C-c h Pd" . helm-projectile-find-dir)
+          ("C-c h Pp" . helm-projectile)
+          :map helm-command-map
+          ("P" . nil)
+          ("Pf" . helm-projectile-find-file)
+          ("Pd" . helm-projectile-find-dir)
+          ("Pp" . helm-projectile))
+  :config
+  (helm-projectile-on))
+
+(use-package org-projectile-helm
+  :ensure t
+  :defer 1
+  :after (org-projectile helm-projectile)
+  :bind (:map helm-command-map
+              ("Pp" . org-projectile-helm-template-or-project)))
+
+(use-package org-projectile ;;
+  :bind (("C-c P" . juicepie)
+         :map helm-command-map
+         ("Pc" . juicepie))
+  :defer
+  :after (projectile org)
+  :commands (org-projectile-project-todo-completing-read)
+  :init
+  (defalias 'juicepie #'org-projectile-project-todo-completing-read)
+  :config
+  (progn
+    (setq org-projectile-projects-file "~/org/campaigns.org")
+    ;;    (add-to-list 'org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+    )
+  :ensure t)
+
+(use-package projectile
+  :ensure t
+  :after helm
+  :defer 1
+  :commands (gopro projectile-switch-project projectile-open-project projectile-find-file)
+  :bind (("C-c g p o" . chops)
+         ("C-c g p g". gopro)
+         ("C-c g p f" . projectile-find-file)
+         :map helm-command-map
+         ("P" . nil)
+         ("Po" . chops)
+         ("Pg". gopro))
+  :diminish projectile-mode
+  :delight '(:eval
+             (propertize (concat " " (projectile-project-name))
+                         'face '( :weight bold  :foreground "#FD9711" :background "#111")))
+  :init
+  (defalias 'gopro #'projectile-switch-project)
+  (defalias 'chops #'projectile-switch-open-project)
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+  (projectile-mode)
+  (setq projectile-enable-caching t)
+  (setq projectile-mode-line
+        '(:eval
+          (format " Proj[%s]"
+                  (projectile-project-name)))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -783,7 +851,7 @@ X-Message-SMTP-Method: sendmail
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
-    (password-store forge org-trello org-super-agenda helm-swoop helm-org-rifle helm-org helm-describe-modes helm-descbinds org-notmuch yaml-mode helm-notmuch notmuch org-plus-contrib which-key magit use-package))))
+    (ansible-doc ansible org-projectile-helm helm-projectile projectile multiple-cursors password-store forge org-trello org-super-agenda helm-swoop helm-org-rifle helm-org helm-describe-modes helm-descbinds org-notmuch yaml-mode helm-notmuch notmuch org-plus-contrib which-key magit use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
