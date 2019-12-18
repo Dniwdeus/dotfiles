@@ -264,12 +264,27 @@
 
 
 
-    ;; (setq org-agenda-custom-commands
-    ;;       '(("@" "Contexts"
-    ;;          ((tags-todo "@email"
-    ;;                      ((org-agenda-overriding-header "Emails")))
-    ;;           (tags-todo "@phone"
-    ;;                      ((org-agenda-overriding-header "Phone")))))))
+    (setq org-agenda-custom-commands
+          '(
+
+            ("@" "Contexts"
+             ((tags-todo "@email"
+                         ((org-agenda-overriding-header "Emails")))
+              (tags-todo "@phone"
+                         ((org-agenda-overriding-header "Phone")))))
+
+            ("AZ" "Master Agenda"
+             ((agenda #1="")
+              (alltodo #1#))
+             ((org-agenda-todo-list-sublevels 'indented)
+              (org-tags-match-list-sublevels 'indented)
+              (org-agenda-sorting-strategy '(priority-down)))
+
+             )
+
+            ("w" "work" agenda "")
+            ("k" "knowledge" alltodo "")
+            ))
     (setq org-agenda-files (list org-directory))
 
 
