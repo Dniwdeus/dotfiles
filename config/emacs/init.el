@@ -743,6 +743,24 @@ X-Message-SMTP-Method: sendmail
   :hook (emacs-lisp-mode . outshine-mode)
   :ensure t
   )
+(use-package aweshell
+  :commands (aweshell-new
+             aweshell-next
+             aweshell-prev
+             aweshell-clear-buffer
+             aweshell-sudo-toggle
+             aweshell-switch-buffer
+             aweshell-dedicated-toggle
+             aweshell-dedicated-open
+             aweshell-dedicated-close)
+  :bind
+  (("M-e" . aweshell-toggle)
+   ("M-e" . aweshell-dedicated-toggle)
+   :map eshell-mode
+   ("C-S-l" . aweshell-sudo-toggle)
+   ("M-'" . aweshell-search-history)
+   ("C-l" . aweshell-clear-buffer))
+  )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
