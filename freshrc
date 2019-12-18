@@ -114,8 +114,7 @@ ln -sf ~/.dotfiles/config/emacs/init.el ~/.emacs.d/init.el
 ln -sf ~/.dotfiles/config/emacs/elisp/* ~/.emacs.d/elisp/
 
 mkdir -p ~/.emacs.d/packages
-fresh troyp/asoc.el .  --file=~/.emacs.d/packages/asoc/
-fresh techniumlabs/ecloud . --file=~/.emacs.d/packages/ecloud/
+fresh manateelazycat/aweshell .  --file=~/.emacs.d/packages/aweshell/
 
 #########
 # SHELL #
