@@ -43,3 +43,7 @@ fi
 if [ -f ~/.fresh/build/shell.sh ]; then
     source ~/.fresh/build/shell.sh
 fi
+
+# kubernetes
+## config sources
+KUBECONFIG+=~/.kube/config
