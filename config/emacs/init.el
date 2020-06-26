@@ -945,6 +945,7 @@ X-Message-SMTP-Method: sendmail
  '(package-selected-packages
    (quote
     (ansible-doc ansible org-projectile-helm helm-projectile projectile multiple-cursors password-store forge org-trello org-super-agenda helm-swoop helm-org-rifle helm-org helm-describe-modes helm-descbinds org-notmuch yaml-mode helm-notmuch notmuch org-plus-contrib which-key magit use-package)))
+ '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
