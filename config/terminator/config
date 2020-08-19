@@ -9,7 +9,7 @@
   [[default]]
     [[[child1]]]
       parent = window0
-      profile = default
+      profile = readabl
       type = Terminal
     [[[window0]]]
       parent = ""
