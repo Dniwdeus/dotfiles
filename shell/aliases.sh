@@ -11,3 +11,10 @@ alias j='fasd_cd -d -i' # cd with interactive selection
 
 # connect to Tsetinis VPN
 alias zvpn='sudo openvpn --config /run/media/dniwdeus/20b914b0-837a-46d5-ab7f-4f01aff92f03/assets/openVPN/openvpn_cavgulas.ovpn'
+
+# update Tsetinis major version
+alias setzv="curl -v --request POST \
+    --header 'Authorization: Eiso1aquuaHu9aisahweghee1oaqu3ab' \
+    --header 'Content-Type: application/json' \
+    --data '{ "major": "'"${MAJOR_VERSION}"'" }' \
+    https://releases.tset.cloud/api/clusters/${CLUSTER}/namespaces/${NAMESPACE}/version"
