@@ -4,7 +4,7 @@
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(package-initialize)
+(package-initialize)  ;; Initialize & Install Package
 
 ;;; * bootstrap use package [fn:11]
 
@@ -29,8 +29,6 @@
 (setq package-load-list '(all))     ;; List of packages to load
 (unless (package-installed-p 'org-plus-contrib)  ;; Make sure the Org package is
   (package-install 'org-plus-contrib))           ;; installed, install it if not
-(package-initialize)                ;; Initialize & Install Package
-
 
 ;;; * my custom functions
 
