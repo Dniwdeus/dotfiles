@@ -46,4 +46,8 @@ fi
 
 # kubernetes
 ## config sources
-KUBECONFIG+=~/.kube/config
+KUBECONFIG+=~/.kube/develop
+KUBECONFIG+=:~/.kube/kion
+KUBECONFIG+=:~/.kube/production
+KUBECONFIG+=:~/.kube/tc
+KUBECONFIG+=:~/.kube/zf
