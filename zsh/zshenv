@@ -9,3 +9,5 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+export KUBECONFIG=/home/dniwdeus/.kube/tset_nucost_develop:/home/dniwdeus/.kube/tset_nucost_production:/home/dniwdeus/.kube/tset_nucost_kion:/home/dniwdeus/.kube/tset_nucost_tc:/home/dniwdeus/.kube/tset_nucost_zf:/home/dniwdeus/.kube/tset_ops_orbitals
