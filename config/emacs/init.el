@@ -961,3 +961,6 @@ X-Message-SMTP-Method: sendmail
  '(link-visited ((t (:inherit link :foreground "brightmagenta"))))
  '(magit-bisect-bad ((t (:foreground "red"))))
  '(minibuffer-prompt ((t (:foreground "brightwhite" :height 1.5)))))
+
+;; set default browser in emacs
+(setq browse-url-browser-function 'browse-url-chromium)
