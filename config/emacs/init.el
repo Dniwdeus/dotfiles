@@ -971,6 +971,7 @@ X-Message-SMTP-Method: sendmail
      (:name "tomymovieguru" :query "to:\"c.avgulas@mymovie.guru\"")))
  '(org-agenda-files
    '("~/org/tset.org" "/home/dniwdeus/org/org.org" "/home/dniwdeus/org/appguru.org" "/home/dniwdeus/org/quicklog.org"))
+ '(org-edit-src-content-indentation 2)
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    '(kotlin-mode makefile-mode terraform-doc org-tanglesync lsp-mode terraform-lsp terraform-mode lsp-terraform ansible-doc ansible org-projectile-helm helm-projectile projectile multiple-cursors password-store forge org-trello org-super-agenda helm-swoop helm-org-rifle helm-org helm-describe-modes helm-descbinds org-notmuch yaml-mode helm-notmuch notmuch org-plus-contrib which-key magit use-package))
