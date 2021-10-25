@@ -82,6 +82,26 @@
     :ensure t)
   )
 
+(use-package
+  ediff
+  :hook ((ediff-keymap-setup-hook . add-d-to-ediff-mode-map)
+
+         (ediff-prepare-buffer . outline-show-all)) ;;  (ref:ediff-show-outline)
+  :config (progn
+            (defun ediff-copy-both-to-C ()
+              (interactive)
+              (ediff-copy-diff ediff-current-difference nil 'C nil (concat
+                                                                    (ediff-get-region-contents
+                                                                     ediff-current-difference 'A
+                                                                     ediff-control-buffer)
+                                                                    (ediff-get-region-contents
+                                                                     ediff-current-difference 'B
+                                                                     ediff-control-buffer))))
+            (defun add-d-to-ediff-mode-map ()
+              (define-key ediff-mode-map "D" 'ediff-copy-both-to-C))
+            (setq ediff-diff-options "-w") ;; (ref:ediff-ignore-whitespace)
+            (setq ediff-window-setup-function #'ediff-setup-windows-plain) ;;  (ref:ediff-single-frame)
+            (setq ediff-split-window-function #'split-window-horizontally)))
 
 (use-package ghub
   :ensure t
