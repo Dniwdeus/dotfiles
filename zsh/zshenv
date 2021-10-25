@@ -10,4 +10,4 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export KUBECONFIG=/home/dniwdeus/.kube/tset_nucost_develop:/home/dniwdeus/.kube/tset_nucost_production:/home/dniwdeus/.kube/tset_nucost_kion:/home/dniwdeus/.kube/tset_nucost_tc:/home/dniwdeus/.kube/tset_nucost_zf:/home/dniwdeus/.kube/tset_ops_orbitals
+export KUBECONFIG=/home/dniwdeus/.kube/tset_nucost_develop:/home/dniwdeus/.kube/tset_nucost_production:/home/dniwdeus/.kube/tset_nucost_kion:/home/dniwdeus/.kube/tset_nucost_tc:/home/dniwdeus/.kube/tset_nucost_zf:/home/dniwdeus/.kube/tset_ops_orbitals:/home/dniwdeus/.kube/tset_deadpool:/home/dniwdeus/.kube/tset_paradise:/home/dniwdeus/.kube/tset_hulk:/home/dniwdeus/.kube/tset_punisher:/home/dniwdeus/.kube/tset_develop:/home/dniwdeus/.kube/tset_production:/home/dniwdeus/.kube/tset_zf:/home/dniwdeus/.kube/tset_tc
