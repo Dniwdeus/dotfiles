@@ -280,7 +280,8 @@
     (setq org-default-notes-file (concat org-directory "/org.org"))
     (add-to-list 'auto-mode-alist '("\\.trello\\'" . org-mode))
 
-
+		(setq org-src-preserve-indentation t
+          org-src-tab-acts-natively t)
 
     (setq org-agenda-custom-commands
           '(
