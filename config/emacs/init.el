@@ -961,15 +961,14 @@ X-Message-SMTP-Method: sendmail
  '(delete-selection-mode t)
  '(inhibit-startup-screen t)
  '(notmuch-saved-searches
-   (quote
-    ((:name "inbox" :query "tag:inbox" :key "i")
+   '((:name "inbox" :query "tag:inbox" :key "i")
      (:name "unread" :query "tag:unread" :key "u")
      (:name "flagged" :query "tag:flagged" :key "f")
      (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
      (:name "all mail" :query "*" :key "a")
      (:name "archive2017" :query "date:2017")
-     (:name "tomymovieguru" :query "to:\"c.avgulas@mymovie.guru\""))))
+     (:name "tomymovieguru" :query "to:\"c.avgulas@mymovie.guru\"")))
  '(org-agenda-files
    '("~/org/tset.org" "/home/dniwdeus/org/org.org" "/home/dniwdeus/org/appguru.org" "/home/dniwdeus/org/quicklog.org"))
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
