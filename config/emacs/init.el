@@ -707,6 +707,7 @@ X-Message-SMTP-Method: sendmail
 
 
 (use-package org-super-agenda
+  :disabled t
   :ensure t
   :config
   (org-super-agenda-mode)
