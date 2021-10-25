@@ -940,6 +940,18 @@ X-Message-SMTP-Method: sendmail
   :init
   (add-hook 'yaml-mode-hook #'ansible-doc-mode))
 
+(use-package terraform-mode
+  :ensure t)
+
+(use-package terraform-doc
+  :ensure t)
+
+(use-package lsp-mode
+  :ensure t)
+
+(use-package org-tanglesync
+  :ensure t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
