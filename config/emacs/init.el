@@ -970,7 +970,7 @@ X-Message-SMTP-Method: sendmail
      (:name "archive2017" :query "date:2017")
      (:name "tomymovieguru" :query "to:\"c.avgulas@mymovie.guru\"")))
  '(org-agenda-files
-   '("~/org/tset.org" "/home/dniwdeus/org/org.org" "/home/dniwdeus/org/appguru.org" "/home/dniwdeus/org/quicklog.org"))
+   '("~/org/tset.org" "~/org/org.org" "~/org/appguru.org" "~/org/quicklog.org"))
  '(org-edit-src-content-indentation 2)
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
