@@ -18,3 +18,4 @@ alias gll='git log --pretty="- %s"'
 # alias gla='git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all'
 alias glba='git for-each-ref --format=" %(authorname) [%(committerdate:relative)] %09 %(refname)" --sort=committerdate --sort=authorname | sed "/refs\/tags\//d"' #sorted list of branches per author and date
 alias gpm='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs git branch -d' #prune/delete merged, deleted branches locally
+alias gpum='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs git branch -D' #prune/delete deleted branches locally - even umerged
