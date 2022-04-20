@@ -23,3 +23,10 @@ alias gpm='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs gi
 
 #prune/delete deleted branches locally - even umerged
 alias gpum='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs git branch -D'
+
+###########
+# kubectl #
+###########
+
+#show requests and limits for CPU and memory in current cluster context
+alias nodestats='kubectl get nodes | grep ip- | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
