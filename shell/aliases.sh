@@ -30,3 +30,5 @@ alias gpum='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs g
 
 #show requests and limits for CPU and memory in current cluster context
 alias nodestats='kubectl get nodes | grep ip- | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
+alias kille='kubectl get pod | grep Evicted | awk '\''{print $1}'\'' | xargs kubectl delete pod'
