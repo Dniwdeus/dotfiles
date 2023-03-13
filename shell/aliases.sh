@@ -56,3 +56,28 @@ alias killa='kubectl get pod | grep Error | awk '\''{print $1}'\'' | xargs kubec
 
 # have a quick way to orientate to which cluster / namespace I'm connected to
 alias wai='kubectx -c && kubens -c'
+
+#############
+# terraform #
+#############
+
+# terraform plan
+alias tp='terraform plan'
+
+# terraform apply
+alias ta='terraform apply'
+
+# show current workspace
+alias tw='terraform workspace show'
+
+# select workspace
+alias tws='terraform workspace select'
+
+# list available workspaces
+alias twl='terraform workspace list'
+
+# create new workspace
+alias twc='terraform workspace new'
+
+# empties the entire state of selected workspace
+alias tfk='terraform state list | xargs terraform state rm'
