@@ -13,6 +13,7 @@ alias myp='dig +short txt ch whoami.cloudflare @1.0.0.1' # show me my IP using c
 #######
 # Git #
 #######
+
 alias gll='git log --pretty="- %s"'
 # alias glb='git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all'
 # alias glp='git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all'
@@ -24,6 +25,9 @@ alias gpm='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs gi
 
 #prune/delete deleted branches locally - even umerged
 alias gpum='git fetch -p && git branch -vv | awk "/: gone]/{print $1}" | xargs git branch -D'
+
+#status for whoami whereami
+alias gst='git config --list'
 
 ###########
 # kubectl #
