@@ -34,6 +34,25 @@ alias gst='git config --list'
 ###########
 
 #show requests and limits for CPU and memory in current cluster context
-alias nodestats='kubectl get nodes | grep ip- | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
 
+## some former attempt (without using kubectl plugins!)
+# alias nodestats='kubectl get nodes | grep ip- | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
+## using the resource-capacity plugin via krew:
+
+alias nsmu='kubectl resource-capacity --sort mem.util --util'
+
+alias nsmup='kubectl resource-capacity --sort mem.util --util -p'
+
+alias nscu='kubectl resource-capacity --sort cpu.util --util'
+
+alias nscup='kubectl resource-capacity --sort cpu.util --util -p'
+
+# kill evicted pods to free displayed output from unnecessary noise:
 alias kille='kubectl get pod | grep Evicted | awk '\''{print $1}'\'' | xargs kubectl delete pod'
+
+# kill pods which are kept in "Error" state to silence slack noise:
+alias killa='kubectl get pod | grep Error | awk '\''{print $1}'\'' | xargs kubectl delete pod'
+
+# have a quick way to orientate to which cluster / namespace I'm connected to
+alias wai='kubectx -c && kubens -c'
