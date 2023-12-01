@@ -10,6 +10,8 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export KUBECONFIG=/home/avgulas/.kube/tset_nucost_develop:/home/avgulas/.kube/tset_nucost_production:/home/avgulas/.kube/tset_nucost_kion:/home/avgulas/.kube/tset_nucost_tc:/home/avgulas/.kube/tset_nucost_zf:/home/avgulas/.kube/tset_ops_orbitals:/home/avgulas/.kube/tset_deadpool:/home/avgulas/.kube/tset_paradise:/home/avgulas/.kube/tset_hulk:/home/avgulas/.kube/tset_punisher:/home/avgulas/.kube/tset_develop:/home/avgulas/.kube/tset_production:/home/avgulas/.kube/tset_zf:/home/avgulas/.kube/tset_tc
+# export KUBECONFIG=/home/avgulas/.kube/tset_ops_orbitals:/home/avgulas/.kube/tset_punisher:/home/avgulas/.kube/tset_develop:/home/avgulas/.kube/tset_production:/home/avgulas/.kube/tset_zf:/home/avgulas/.kube/tset_tc:/home/avgulas/.kube/tset_bmw
+
+export KUBCONFIG=/home/avgulas/.kube/config
 
 source /mnt/data/vault/onepassword/op.env
