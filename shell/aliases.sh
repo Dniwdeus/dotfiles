@@ -78,6 +78,9 @@ alias killa='kubectl get pod | grep Error | awk '\''{print $1}'\'' | xargs kubec
 # kill all pods marked as "Completed"
 alias killc='kubectl get pod | grep Completed | awk '\''{print $1}'\'' | xargs kubectl delete pod'
 
+# scale down target deployment
+alias ksd='kubectl scale --replicas=0 deployment'
+
 # have a quick way to orientate to which cluster / namespace I'm connected to
 alias wai='kubectx -c && kubens -c'
 
