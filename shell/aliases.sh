@@ -84,6 +84,9 @@ alias ksd='kubectl scale --replicas=0 deployment'
 # have a quick way to orientate to which cluster / namespace I'm connected to
 alias wai='kubectx -c && kubens -c'
 
+# remove all "released" PVs from namespace "database"
+alias kpvc='kubectl get pv -n databases | grep Released | awk '$1 {print$1}' | while read vol; do kubectl delete pv/${vol}; done'
+
 #############
 # terraform #
 #############
