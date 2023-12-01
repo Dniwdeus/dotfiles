@@ -87,6 +87,14 @@ alias wai='kubectx -c && kubens -c'
 # remove all "released" PVs from namespace "database"
 alias kpvc='kubectl get pv -n databases | grep Released | awk '$1 {print$1}' | while read vol; do kubectl delete pv/${vol}; done'
 
+########
+# helm #
+########
+
+alias hl='helm list -a --max 4200'
+
+alias hg='helm list -a --max 4200 | grep'
+
 #############
 # terraform #
 #############
