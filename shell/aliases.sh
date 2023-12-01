@@ -9,6 +9,7 @@ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 # alias zz='fasd_cd -d -i' # cd with interactive selection (shell-alias-fasd-interactive-cd)
 alias j='fasd_cd -d -i' # cd with interactive selection
 alias myp='dig +short txt ch whoami.cloudflare @1.0.0.1' # show me my IP using cloudflare
+alias pcr='pre-commit run -a' # run all installed pre-commit hooks
 
 #######
 # Git #
