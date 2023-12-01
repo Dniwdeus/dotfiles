@@ -75,6 +75,9 @@ alias kille='kubectl get pod | grep Evicted | awk '\''{print $1}'\'' | xargs kub
 # kill pods which are kept in "Error" state to silence slack noise:
 alias killa='kubectl get pod | grep Error | awk '\''{print $1}'\'' | xargs kubectl delete pod'
 
+# kill all pods marked as "Completed"
+alias killc='kubectl get pod | grep Completed | awk '\''{print $1}'\'' | xargs kubectl delete pod'
+
 # have a quick way to orientate to which cluster / namespace I'm connected to
 alias wai='kubectx -c && kubens -c'
 
