@@ -34,6 +34,26 @@ alias gst='git config --list'
 # kubectl #
 ###########
 
+# standard cmds
+
+alias kgp='kubectl get pod'
+
+alias kga='kubectl get pod --all-namespaces'
+
+alias kg='kubectl get pod | grep'
+
+alias kgg='kubectl get pod --all-namespaces | grep'
+
+alias kdp='kubectl delete pod'
+
+alias kn='kubectl get namespaces'
+
+alias kl='kubectl logs -f'
+
+alias kgd='kubectl get deployment'
+
+alias krd='kubectl rollout restart deployment'
+
 #show requests and limits for CPU and memory in current cluster context
 
 ## some former attempt (without using kubectl plugins!)
