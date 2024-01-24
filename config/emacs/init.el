@@ -601,7 +601,7 @@ X-Message-SMTP-Method: sendmail
   :init
   (setq helm-command-prefix-key "C-c h")
 
-  (require 'helm-config)
+;;  (require 'helm-config)
   :bind (("M-x" . helm-M-x)
          ("C-c h"   . helm-command-prefix)
          ("C-c C-SPC" . helm-all-mark-rings) ; I modified the keybinding
